@@ -4,13 +4,13 @@ namespace App\Controllers;
 use App\Models\Property2;
 use App\Models\PropertyListingModel;
 
-class Properties extends BaseController
+class Listing  extends BaseController
 {
     public function index()
     {
         $db = db_connect();
         $property = new PropertyListingModel($db);
-        $props = $property->getPropertyListing(2);
+        $props = $property->getPropertyListing($id);
 
         //Only for display purposes
         echo "<pre>";
