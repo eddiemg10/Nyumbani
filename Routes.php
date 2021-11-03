@@ -1,5 +1,5 @@
 <?php
 
-$routes->get('/Listings/(:num)','Listings/index/$1');
+$routes->get('/Listing/(:num)','Listing/index/$1');
 
 ?>
