@@ -37,6 +37,10 @@ $routes->get('/properties/(:num)', 'properties::index/$1');
 
 $routes->get('/Applications/(:num)','Applications/index/$1');
 $routes->get('/Requests/(:num)','Requests/index/$1');
+
+$routes->match(['get','post'],'dummyview', 'AddProperty::dummyview');
+$routes->match(['get','post'],'index', 'AddProperty::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
