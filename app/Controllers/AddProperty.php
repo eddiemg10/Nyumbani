@@ -8,6 +8,8 @@
 namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\Property;
+use App\Models\PropertyDetails;
+use App\Models\PropertyMedia;
 
 class AddProperty extends BaseController{
 
@@ -26,10 +28,10 @@ class AddProperty extends BaseController{
                   "bedrooms": "5",
                   "bathrooms": "5",
                   "elevator": [
-                    "on"
+                    "1"
                   ],
                   "parking": [
-                    "on"
+                    "1"
                   ]
                 }';
       $assoc_array = json_decode($json, true);
