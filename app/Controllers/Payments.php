@@ -198,6 +198,23 @@ class Payments extends BaseController
 
 
 /*View Producing functions are here till the end*/
+    
+    //Page 13 of the views Data
+    public function getTransactions($ownerID){
+            $db = db_connect();
+            $model = new paymentModel($db);
+
+            
+            $data["fetch_data"] = $model->fetch_data($ownerID);
+
+/*            echo "<pre>";
+                print_r($data);
+            echo "</pre>";*/
+
+            
+            return json_encode($data["fetch_data"]);
+             //echo view("main_view", $data);
+       }
 
     //Functions to produce the data required on Page 14 of  thie wireframes provided
     public function extract($propertyID)
