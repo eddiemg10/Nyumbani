@@ -153,6 +153,14 @@ class PaymentModel
 
             return $totalRentPaid;
         }
+	
+	
+	//Fetching All Payments
+        function fetch_data($ownerID)
+        {
+            $query = $this->db->table("tbl_payments")->where(["senderID"=>$ownerID,])->orWhere("recipientID",$ownerID)->get()->getResult();
+            return $query;
+        }
 
 
 
