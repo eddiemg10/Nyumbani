@@ -213,7 +213,7 @@ class Payments extends BaseController
 
             
             return json_encode($data["fetch_data"]);
-             //echo view("main_view", $data);
+             //echo view("payments_view1", $data);
        }
 
     //Functions to produce the data required on Page 14 of  thie wireframes provided
