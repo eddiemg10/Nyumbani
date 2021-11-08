@@ -33,15 +33,14 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/properties/(:num)', 'properties::index/$1');
-$routes->match(['get','post'],'dummyview', 'AddProperty::dummyview');
-$routes->match(['get','post'],'index', 'AddProperty::index');
+$routes->get('/Listing/(:num)','Listing/index/$1');
 
+$routes->match(['get','post'],'/addproperty/dummyview', 'AddProperty::dummyview');
+$routes->match(['get','post'],'/addproperty', 'AddProperty::index');
+//Small spelling error above changed - 'addpropery' to 'addproperty'
 
 $routes->get('/Applications/(:num)','Applications/index/$1');
 $routes->get('/Requests/(:num)','Requests/index/$1');
-
-$routes->match(['get','post'],'dummyview', 'AddProperty::dummyview');
-$routes->match(['get','post'],'index', 'AddProperty::index');
 
 /*
  * --------------------------------------------------------------------
