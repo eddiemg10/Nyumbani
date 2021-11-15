@@ -25,5 +25,6 @@ class Listing extends BaseController
 
         // $data = ['listings'=>json_encode($lists)];
         // return view('listings', $data);
+        //hi
     }
 }
