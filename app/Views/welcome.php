@@ -7,37 +7,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Requests</title>
     <link rel="stylesheet" href="css/Application.css">
+    <style>
+    .desc {
+        color: green;
+    }
+    </style>
 </head>
 
 <body>
 
     <h1 id="completed-routes">COMPLETED ROUTES</h1>
-    <h3><strong>Properties</strong></h3>
-    <ul>
-        <li><strong>/properties/?</strong>
-            <blockquote>
-                <p>Gets properties belonging to single user</p>
-            </blockquote>
-        </li>
-    </ul>
-    <h3><strong>Listings</strong></h3>
-    <ul>
-        <li><strong>/listings</strong></li>
-    </ul>
-    <blockquote>
-        <p>Gets all listings</p>
-    </blockquote>
-    <ul>
-        <li><strong>/listings/?</strong></li>
-        <blockquote>
-            <p>Gets single listing</p>
+    <h3>Properties</h3>
+    /properties/?
+    <p class="desc">Gets properties belonging to single user</p>
 
-        </blockquote>
+    <h3>Listings</h3>
+    /listings
 
-        <li><strong>/listing/?</strong></li>
-        <blockquote>
-            <p>Gets listings belonging to specific owner</p>
+    <p class="desc">Gets all listings</p>
 
-        </blockquote>
+
+    /listings/?
+    <p class="desc">Gets single listings</p>
+
+
+    /listing/?
+
+    <p class="desc">Gets listings belonging to specific owner</p>
+
+
+    <h3>Applications</h3>
+
+    /applications/?
+
+    <p class="desc">Gets properties belonging to single user</p>
+
+
+
+    <h3>Listings</h3>
+
+    /requests/?
+    <p class="desc">Gets properties belonging to single user
+    </p>
+
 
 </body>
