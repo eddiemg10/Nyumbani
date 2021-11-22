@@ -17,8 +17,8 @@ class Properties extends BaseController
         $property = new PropertyDetailsModel($db);
         $props = $property->getPropertyDetails($id);
 
-        return $this->respond($props);
-        // return json_encode($props);
+        // return $this->respond($props);
+        return json_encode($props);
 
 
         
