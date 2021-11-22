@@ -32,7 +32,7 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/properties/(:num)', 'properties::index/$1');
+$routes->get('/properties/(:num)', 'Properties::index/$1');
 $routes->get('/listing/(:num)','Listing::index/$1');
 $routes->get('/listings','Listing::getListings');
 $routes->get('/listings/(:num)','Listing::getSingleListing/$1');
