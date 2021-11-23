@@ -9,21 +9,21 @@ class Requests extends BaseController{
     use ResponseTrait;
 
 
-    public function index($id){
+    public function index(){
 
         $request = new RequestsModel(); 
-        $results = $request->getRequests($id); 
+        $results = $request->getRequests(); 
 
-       // return $this->respond($results);
+        return $this->respond($results);
         
         #For Testing Purporse
-         echo "<pre>";
-         print_r($results);
-         echo "</pre>"; 
+        // echo "<pre>";
+         //print_r($results);
+        // echo "</pre>"; 
 
-         $data = ['ViewRequests'=>json_encode($results)];
+        // $data = ['ViewRequests'=>json_encode($results)];
 
-         return view('ViewRequests', $data);
+        // return view('ViewRequests', $data);
     }
 
     public function addRequest() {
