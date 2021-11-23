@@ -4,11 +4,22 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 class RequestsModel extends Model{
+
+    protected $table = "tbl_requests";
+    protected $primaryKey = "requestID";
+
+    protected $allowedFields = [
+        'propertyID',
+        'requestMessage',
+       // 'requestStatus',
+        //'dateCompleted'
+    ];
+
     protected $db;
 
-    public function __construct() {
+     public function __construct() {
         $this->db = db_connect(); // Loading database
-    }
+    } 
 
     # get all requests from all the properties of the propertyowner
     # Provided the propertyOwner is logged into the system with ownerid=$id
