@@ -24,7 +24,7 @@ class Requests extends BaseController{
         // $data = ['ViewRequests'=>json_encode($results)];
 
         // return view('ViewRequests', $data);
-    }
+}
 
     public function addRequest() {
         return view('addrequest');
