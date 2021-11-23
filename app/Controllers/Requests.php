@@ -12,13 +12,13 @@ class Requests extends BaseController{
     public function index(){
 
         $request = new RequestsModel(); 
-        $results = $request->getRequests(); 
+        $results = $request->getRequests(1); 
 
         return $this->respond($results);
         
         #For Testing Purporse
         // echo "<pre>";
-         //print_r($results);
+        //print_r($results);
         // echo "</pre>"; 
 
         // $data = ['ViewRequests'=>json_encode($results)];
