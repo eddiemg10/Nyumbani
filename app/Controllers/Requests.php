@@ -24,7 +24,7 @@ class Requests extends BaseController{
         // $data = ['ViewRequests'=>json_encode($results)];
 
         // return view('ViewRequests', $data);
-}
+    }
 
     public function addRequest() {
         return view('addrequest');
@@ -61,5 +61,5 @@ class Requests extends BaseController{
         $data['request'] = $role->find($id);
         return view('editrequest',$data);
     }
-}
 
+}
