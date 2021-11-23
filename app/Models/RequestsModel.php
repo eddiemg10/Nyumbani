@@ -19,7 +19,7 @@ class RequestsModel extends Model{
 
     public function __construct() {
         $this->db = db_connect(); // Loading database
-    } 
+    }
 
     # get all requests from all the properties of the propertyowner
     # Provided the propertyOwner is logged into the system with ownerid=$id
