@@ -1,36 +1,24 @@
 <?php
 
 namespace App\Controllers;
+
+use CodeIgniter\API\ResponseTrait;
 use App\Models\Property;
 use App\Models\PropertyDetailsModel;
 
 class Properties extends BaseController
 {
+    use ResponseTrait;
+    
     public function index($id)
     {
+        
         $db = db_connect();
         $property = new PropertyDetailsModel($db);
         $props = $property->getPropertyDetails($id);
-        return json_encode($props);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return $this->respond($props);
+        // return json_encode($props);
 
 
         
