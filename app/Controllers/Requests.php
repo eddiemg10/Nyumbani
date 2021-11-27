@@ -26,4 +26,40 @@ class Requests extends BaseController{
         // return view('ViewRequests', $data);
     }
 
+    public function addRequest() {
+        return view('addrequest');
+    }
+
+    public function store () {
+        $request = new RequestsModel();
+
+        $data = [
+            'propertyID' => $this->request->getPost('propertyID'),
+
+            'requestMessage' => $this->request->getPost('requestMessage'),
+
+          //  'requestStatus' => $this->request->getPost('requestStatus'),
+
+            'dateCompleted' => $this->request->getPost('dateCompleted')
+        ];
+
+        $request->save($data);
+    }
+
+    public function viewRequests() {
+
+        $request = new RequestsModel();
+        
+        $data['request'] = $request->findAll();
+
+        return view('tenantviewrequest',$data);
+    }
+
+    public function edit($id) {
+        $request = new RequestsModel();
+
+        $data['request'] = $role->find($id);
+        return view('editrequest',$data);
+    }
+
 }
