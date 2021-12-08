@@ -282,39 +282,7 @@ class Payments extends BaseController
 
 
 //Page 13 of the views Data
-/*    public function getTransactions($ownerID){
-            $db = db_connect();
-            $model = new paymentModel($db);
 
-            $owner = $model->isOwner($ownerID);
-
-            if ($owner == true) {
-                
-          
-
-            
-            $data2 = $model->fetch_data($ownerID);
-
-           echo "<pre>";
-                print_r($data2);
-            echo "</pre>";
-
-
-            $data = ['data' => json_encode($data2)];
-
-        }else
-        {
-            $data = ['data' => 'Not Property Owner']; 
-        }
-
-
-            
-
-           // return json_encode($data['data']);
-     
-
-       }
-*/
 
        public function getTransactions($ownerID)
        {
