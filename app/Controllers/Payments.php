@@ -282,6 +282,8 @@ class Payments extends BaseController
 
 
 //Page 13 of the views Data
+    
+    //Eddie this is what we discussed ---------
 
 
        public function getTransactions($ownerID)
