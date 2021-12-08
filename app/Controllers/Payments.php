@@ -282,7 +282,7 @@ class Payments extends BaseController
 
 
 //Page 13 of the views Data
-    public function getTransactions($ownerID){
+/*    public function getTransactions($ownerID){
             $db = db_connect();
             $model = new paymentModel($db);
 
@@ -304,7 +304,7 @@ class Payments extends BaseController
 
         }else
         {
-            $data = ['data' => 'No Property Owner']; 
+            $data = ['data' => 'Not Property Owner']; 
         }
 
 
@@ -314,6 +314,56 @@ class Payments extends BaseController
      
 
        }
+*/
 
+       public function getTransactions($ownerID)
+       {
+            $db = db_connect();
+            $model = new PaymentModel($db);
+
+            $owner = $model->isOwner($ownerID);
+
+            if ($owner === true) {
+                // code...
+
+                $data2 = $model->fetchit($ownerID);
+
+
+
+
+            foreach ($data2 as $property) {
+                // code...
+
+
+                $rentStatus = $this->rentStatus($property->propertyID);
+
+                
+                    if (!is_null($rentStatus["rentStatus"]))
+                    {
+                        $property->rentStatus = $rentStatus["rentStatus"];
+                        $property->rentArrears = $rentStatus["rentArrears"];
+                    }
+                    else
+                    {
+                        $property->rentStatus = null;
+                        $property->rentArrears = null;
+                    }
+
+
+
+            }
+
+
+
+            $data = ['data' => json_encode($data2)];
+
+        }else
+        {
+            $data = ['data' => 'No Property Owner']; 
+        }
+       
+        return json_encode($data);
+
+    }
 
 }
