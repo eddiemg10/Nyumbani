@@ -41,6 +41,8 @@ $routes->get('/payments/(:num)','Payments::extract/$1');
 $routes->get('/payments/summary/(:num)','Payments::summary/$1');
 $routes->get('/transactions/(:num)','Payments::getTransactions/$1');
 
+$routes->post('/login','UserAuthorization::login');
+$routes->post('/register','UserAuthorization::register');
 
 
 
