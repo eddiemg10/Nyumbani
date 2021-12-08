@@ -176,6 +176,18 @@ class PaymentModel
         }
 
 
+        function fetchit($owner)
+        {
+            $query = $this->db->table('tbl_property')
+                                ->select(' tbl_property.propertyID,tbl_property.thumbnailPhoto,tbl_property.propertyDescription,tbl_property.propertyRent')
+                                ->where('ownerID',$owner)
+                                ->get()
+                                ->getResult();
+
+            return $query;
+        }
+
+
         function isOwner($userID)
         {
             $builder = $this->db->table('tbl_property')
@@ -192,6 +204,36 @@ class PaymentModel
 
             return $bool;
         }
+
+
+
+        ///Tenants Module
+
+     public function getTenantHistory($tenantID)
+    {
+        return $this->db->table('tbl_payments')
+                        ->where(['senderID'=> $tenantID])
+                        ->orWhere('recipientID',$tenantID)
+                        ->get()
+                        ->getResult();
+
+    }
+
+    public function isTenant($tenantID){
+        $builder = $this->db->table('tbl_property')
+                        ->where("tbl_property.tenantID",$tenantID)
+                        ->get()
+                        ->getResultArray();
+
+        if (empty($builder)) {
+            $bool = false;
+        }else
+        {
+            $bool = true;
+        }
+
+        return $bool;
+    }
 
 
 }
