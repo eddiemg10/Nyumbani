@@ -38,17 +38,22 @@ class Requests extends BaseController{
     public function store () {
         $request = new RequestsModel();
 
-        $data = [
-            'propertyID' => $this->request->getPost('propertyID'),
+        if($this->request->getMethod() == 'post'){
+            $json = $this->request->getJSON();
+            $data = [
+                'propertyID' => $json->propertyID,
+                'requestMessage' => $json->requestMessage,
+            ];
+    
+            if($request->insert($data)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
 
-            'requestMessage' => $this->request->getPost('requestMessage'),
-
-          //  'requestStatus' => $this->request->getPost('requestStatus'),
-
-            'dateCompleted' => $this->request->getPost('dateCompleted')
-        ];
-
-        $request->save($data);
+        
     }
 
     public function viewRequests() {

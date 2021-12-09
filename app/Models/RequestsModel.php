@@ -28,7 +28,7 @@ class RequestsModel extends Model{
         $builder = $this->db->table('tbl_requests');
 
         $builder->select
-        ('tbl_users.firstName, tbl_requests.dateRequested, tbl_requests.dateCompleted, tbl_property.propertyPhysicalAddress, tbl_requests.requestMessage');
+        ('tbl_users.firstName, tbl_users.lastName, tbl_requests.dateRequested, tbl_requests.dateCompleted, tbl_property.propertyPhysicalAddress, tbl_requests.requestMessage, tbl_requests.requestStatus');
         $builder->join('tbl_property', 'tbl_requests.propertyID = tbl_property.propertyID');
         $builder->join('tbl_users', 'tbl_property.tenantID = tbl_users.userID');
         $builder->where('tbl_property.ownerID', $id);

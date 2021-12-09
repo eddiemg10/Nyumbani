@@ -48,7 +48,7 @@ $routes->get('/transactions/(:num)','Payments::getTransactions/$1');
 
 $routes->post('/login','UserAuthorization::login');
 $routes->post('/register','UserAuthorization::register'); 
-$routes->post('/tenants/submit_request','::login');/////
+$routes->post('/tenants/submit_request','Requests::store');
 
 
 
