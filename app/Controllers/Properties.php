@@ -51,6 +51,13 @@ class Properties extends BaseController
         return $this->respond($props);
     }
 
+    public function getTenantProperties($id){
+        $property = new Property();
+        $props = $property->getTenantProperties($id);
+        return $this->respond($props);
+
+    }
+
     
 
 }

@@ -37,13 +37,15 @@ $routes->get('/listing/(:num)','Listing::index/$1');
 $routes->get('/listings','Listing::getListings');
 $routes->get('/listings/(:num)','Listing::getSingleListing/$1');
 
+$routes->get('/tenants/(:num)','Properties::getTenantProperties/$1');
+
+
 $routes->get('/payments/(:num)','Payments::extract/$1');
 $routes->get('/payments/summary/(:num)','Payments::summary/$1');
 $routes->get('/transactions/(:num)','Payments::getTransactions/$1');
 
 $routes->post('/login','UserAuthorization::login');
 $routes->post('/register','UserAuthorization::register');
-
 
 
 
