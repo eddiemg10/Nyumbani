@@ -8,7 +8,11 @@ class Users extends BaseController{
 
     use ResponseTrait;
 
-
+    public function index(){
+        $users = new User();
+        return $this->respond($users->index());
+        
+    }
     public function usersChartData(){
 
      
@@ -21,5 +25,7 @@ class Users extends BaseController{
         }
         
     }
+
+    
 
 }
