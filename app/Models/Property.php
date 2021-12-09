@@ -26,4 +26,9 @@ class Property extends Model{
 
         return $data;
     }
+
+    public function getTenantProperties($id){
+        $query = $this->db->query('SELECT * FROM `tbl_property` WHERE tenantID= '.$id);
+        return ($query->getResult());
+    }
 }
