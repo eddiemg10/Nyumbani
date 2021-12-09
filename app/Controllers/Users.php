@@ -22,4 +22,10 @@ class Users extends BaseController{
         
     }
 
+    public function getUsers(){
+        $users = new User();
+
+        
+    }
+
 }

@@ -4,11 +4,16 @@ use CodeIgniter\Model;
 
 class User extends Model{
 
-    protected $table = "tbl_property";
-    protected $primaryKey = "propertyID";
+    protected $table = "tbl_users";
+    protected $primaryKey = "userID";
     protected $allowedFields = ["userID","firstName","lastName","email", "role", "password", "joinDate", "isDeleted"];
 
 
+    public function index(){
+        $query = $this->db->query('SELECT * FROM `tbl_users` LEFT JOIN `tbl_blockedusers` ON `tbl_users`.`userID` = `tbl_blockedusers`.`userID` ');
+        return $query->getResult();
+    }
+    
     public function getUserChartData($id){
         
 
