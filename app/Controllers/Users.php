@@ -8,7 +8,11 @@ class Users extends BaseController{
 
     use ResponseTrait;
 
+    public function index(){
+        $users = new User();
 
+        
+    }
     public function usersChartData(){
 
      
@@ -22,10 +26,6 @@ class Users extends BaseController{
         
     }
 
-    public function getUsers(){
-        $users = new User();
-
-        
-    }
+    
 
 }

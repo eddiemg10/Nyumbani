@@ -37,7 +37,7 @@ $routes->get('/listing/(:num)','Listing::index/$1');
 $routes->get('/listings','Listing::getListings');
 $routes->get('/listings/(:num)','Listing::getSingleListing/$1');
 
-$routes->get('/users','User');
+// $routes->get('/users','User');
 
 
 $routes->get('/tenants/(:num)','Properties::getTenantProperties/$1');
