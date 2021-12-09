@@ -24,6 +24,13 @@ class Requests extends BaseController{
         // return view('ViewRequests', $data);
     }
 
+    public function tenantRequests($id){
+        $request = new RequestsModel(); 
+        $results = $request->getTenantRequests($id); 
+
+        return $this->respond($results);
+    }
+
     public function addRequest() {
         return view('addrequest');
     }
