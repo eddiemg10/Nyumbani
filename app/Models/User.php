@@ -10,7 +10,8 @@ class User extends Model{
 
 
     public function index(){
-        $query = $this->db->query('SELECT * FROM `tbl_users` LEFT JOIN `tbl_blockedusers` ON `tbl_users`.`userID` = `tbl_blockedusers`.`userID` ');
+        $query = $this->db->query('SELECT `tbl_users`.`userID`, `firstName`, `lastName`, `email`, `role`, `password`, `joinDate`, `isDeleted` FROM `tbl_users` LEFT JOIN `tbl_blockedusers` ON `tbl_users`.`userID` = `tbl_blockedusers`.`userID` ');
+
         return $query->getResult();
     }
     
