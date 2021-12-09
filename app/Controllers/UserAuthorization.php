@@ -57,6 +57,7 @@ class UserAuthorization extends BaseController{
                 'email'    => $email,
                 'role' => $role,
                 'password' => $password,
+                'joinDate' => date('y-m-d')
             ];
 
             $db = db_connect();
