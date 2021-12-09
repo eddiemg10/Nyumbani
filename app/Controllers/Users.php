@@ -10,7 +10,7 @@ class Users extends BaseController{
 
     public function index(){
         $users = new User();
-
+        return $this->respond($users->index());
         
     }
     public function usersChartData(){
