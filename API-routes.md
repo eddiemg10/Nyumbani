@@ -42,6 +42,9 @@
       }
 ```
   </details>
+  
+  - `/tenants/?`
+ >Gets properties rented by a tenant
 
 ----
 **Listings**
@@ -65,6 +68,17 @@
 - `/requests/?`
 >Gets all requests for a single property owner
 
+- `tenants/submit_request`
+  <details>
+   <summary>Request Body format</summary>
+
+  ```json
+  {
+    "propertyID" : 11,
+    "requestMessage" : "Door handle is broken and needs repair"
+  }
+  ```
+  </details>
 ---
 **Transactions**
 
