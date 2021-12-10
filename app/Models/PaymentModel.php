@@ -5,7 +5,8 @@ namespace App\Models;
 
 use CodeIgniter\Database\ConnectionInterface;
 
-class PaymentModel
+
+class PaymentModel 
 {
     protected $db;
 
@@ -233,6 +234,29 @@ class PaymentModel
         }
 
         return $bool;
+    }
+
+
+
+////Neu Roses
+    public function getProperty($tenantID)
+    {
+        $builder = $this->db->table('tbl_property')
+                            ->select('propertyID,ownerID,tenantID')
+                            ->where('tenantID', $tenantID)
+                            ->get()
+                            ->getRow();
+
+        return $builder;
+    }
+
+    public function makePayment($data)
+    {
+        $builder = $this->db->table('tbl_payments')->insert($data);
+
+        
+
+        return true;
     }
 
 
