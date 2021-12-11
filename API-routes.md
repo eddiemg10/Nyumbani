@@ -221,7 +221,7 @@
   </details>
 
 ---
-**Requests**
+**Property Verification Requests**
 
 - `/verifications/`
 >Gets all verification requests that have not been taken up by an admin
