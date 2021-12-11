@@ -6,7 +6,7 @@ class Users extends Model{
 
     protected $table = "tbl_users";
     protected $primaryKey = "userID";
-    protected $allowedFields = ["userID","firstName","lastName","email","role","password"];
+    protected $allowedFields = ["userID","firstName","lastName","email", "role", "password", "joinDate", "isDeleted"];
     protected $validationRules    = [
         'firstName'     => 'required|min_length[3]',
         'lastName'     => 'required|min_length[3]',
