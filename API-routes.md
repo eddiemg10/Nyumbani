@@ -245,3 +245,9 @@
     }
   ```
   </details>
+  
+  - `/verifications/accept`
+>Verifies a property
+
+- `/verifications/reject`
+>Rejects verification for property
