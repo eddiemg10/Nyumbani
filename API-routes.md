@@ -251,3 +251,10 @@
 
 - `/verifications/reject`
 >Rejects/unverifies verification for property
+
+
+- `/verifications/accepted`
+>Gets all verification requests that have been rejected
+
+- `/verifications/rejected`
+>Gets all verification requests that have been accepted
