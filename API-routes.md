@@ -3,6 +3,41 @@
 
 [Go to deployed backend](https://nyumbanibackend.herokuapp.com/)
 
+**Auth**
+
+- `/register`
+ >Register new user
+ 
+ <details>
+ <summary>POST body format</summary>
+ 
+ ```json
+{
+ "firstName" : "Neme1",
+ "lastName" : "Name2",
+ "email" : "email@gmail.com",
+ "role" : "Owner/Tenant/Administrator",
+ "password" : "1234",
+ "passwordConfirm" : "1234",
+}
+ ```
+</details>
+
+- `/login`
+ >Login using email
+ 
+ <details>
+ <summary>POST body format</summary>
+ 
+ ```json
+{
+ "email" : "email@gmail.com",
+ "password" : "1234"
+}
+ ```
+</details>
+
+---
 **Properties**
 
  - `/properties/?`
