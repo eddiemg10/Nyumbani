@@ -83,7 +83,7 @@
 **Transactions**
 
 - `/payments/?`
->Gets payment history of a property
+>Gets payment history of a single property
 <details>
  <summary>Example:  /payments/10</summary>
 
@@ -154,6 +154,34 @@
     "monthRentReturn": 70000,
     "fromDate": "2019-09-12"
 }
+  ```
+  </details>
+  
+  - `/payments/transactions/?`
+>Gets payment summaries of all properties belonging to owner
+
+<details>
+  <summary>Example: /payments/transactions/1</summary>
+
+  ```json
+  [
+    {
+        "propertyID": "15",
+        "thumbnailPhoto": "placeholder.png",
+        "propertyDescription": "Single Bedroom Apartment in Kiambu",
+        "propertyRent": "35000",
+        "rentStatus": "Overdue",
+        "rentArrears": -770000
+    },
+    {
+        "propertyID": "16",
+        "thumbnailPhoto": "placeholder.png",
+        "propertyDescription": "2 Bedroom Apartment in Nairobi",
+        "propertyRent": "50000",
+        "rentStatus": null,
+        "rentArrears": null
+    }
+]
   ```
   </details>
 
