@@ -27,14 +27,14 @@ class Users extends Model{
 
     ];
 
-    public function verifyLoginDetails($userID,$userPassword) {
-      $builder = $this->db->table('tbl_users')->select('userID, password');
-      $builder->where("userID", $userID);
+    public function verifyLoginDetails($email,$userPassword) {
+      $builder = $this->db->table('tbl_users')->select('email, password');
+      $builder->where("email", $email);
       $query = $builder->get();
       $array = $query->getResultArray();
 
       $password="";
-      
+
       foreach ($query->getResultArray() as $row) {
           $password = $row['password'];
       }
