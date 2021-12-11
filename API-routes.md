@@ -223,7 +223,7 @@
 ---
 **Property Verification Requests**
 
-- `/verifications/`
+- `/verifications`
 >Gets all verification requests that have not been taken up by an admin
 
 - `/verifications/?`
@@ -246,11 +246,11 @@
   ```
   </details>
   
-  - `/verifications/accept`
->Verifies a property
+  - `/verifications/accept/?`
+>Verifies a property by request id
 
-- `/verifications/reject`
->Rejects/unverifies verification for property
+- `/verifications/reject/?`
+>Rejects/unverifies verification for property by request id
 
 
 - `/verifications/accepted`
