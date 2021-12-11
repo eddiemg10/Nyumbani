@@ -220,3 +220,28 @@
   ```
   </details>
 
+---
+**Requests**
+
+- `/verifications/`
+>Gets all verification requests that have not been taken up by an admin
+
+- `/verifications/?`
+>Gets verification details of a specific request
+
+- `/queue/?`
+>Gets queued verification requests per Admin
+
+ - `/enqueue`
+>`POST` requests that assigns a verification requests to an admin's queue
+
+<details>
+  <summary>Requst Body</summary>
+
+  ```json
+    {
+      "id": 1, //verification request ID
+      "admin": 23
+    }
+  ```
+  </details>
