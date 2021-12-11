@@ -250,4 +250,4 @@
 >Verifies a property
 
 - `/verifications/reject`
->Rejects verification for property
+>Rejects/unverifies verification for property
