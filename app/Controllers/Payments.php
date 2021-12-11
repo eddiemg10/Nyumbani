@@ -294,8 +294,8 @@ class Payments extends BaseController
     //Eddie this is what we discussed ---------
 
 
-       public function getTransactions($ownerID)
-       {
+    public function getTransactions($ownerID){
+       
             $db = db_connect();
             $model = new PaymentModel($db);
 
@@ -310,44 +310,35 @@ class Payments extends BaseController
 
 
 
-            foreach ($data2 as $property) {
-                // code...
+                foreach ($data2 as $property) {
+                    // code...
 
 
-                $rentStatus = $this->rentStatus($property->propertyID);
+                    $rentStatus = $this->rentStatus($property->propertyID);
 
-                
-                    if (!is_null($rentStatus["rentStatus"]))
-                    {
-                        $property->rentStatus = $rentStatus["rentStatus"];
-                        $property->rentArrears = $rentStatus["rentArrears"];
-                    }
-                    else
-                    {
-                        $property->rentStatus = null;
-                        $property->rentArrears = null;
-                    }
+                    
+                        if (!is_null($rentStatus["rentStatus"]))
+                        {
+                            $property->rentStatus = $rentStatus["rentStatus"];
+                            $property->rentArrears = $rentStatus["rentArrears"];
+                        }
+                        else
+                        {
+                            $property->rentStatus = null;
+                            $property->rentArrears = null;
+                        }     
 
-        // return json_encode($data['data']);
-     
 
+                }
 
             }
-
-
-
-            $data = ['data' => json_encode($data2)];
-
-        }else
+        else
         {
-            $data = ['data' => 'No Property Owner']; 
+            $data2 = 'No Property Owner'; 
         }
        
-        return $this->respond($data['data']);
-         
-//         return json_encode($data);
+        return $this->respond($data2);
 
     }
 
 }
-
