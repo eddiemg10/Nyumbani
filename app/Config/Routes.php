@@ -37,14 +37,32 @@ $routes->get('/listing/(:num)','Listing::index/$1');
 $routes->get('/listings','Listing::getListings');
 $routes->get('/listings/(:num)','Listing::getSingleListing/$1');
 
+// $routes->get('/users','User');
 
 
-$routes->match(['get','post'],'/addproperty/dummyview', 'AddProperty::dummyview');
-$routes->match(['get','post'],'/addproperty', 'AddProperty::index');
+$routes->get('/tenants/(:num)','Properties::getTenantProperties/$1');
+$routes->get('/tenants/requests/(:num)','Requests::tenantRequests/$1');
+
+
+
+$routes->get('/payments/(:num)','Payments::extract/$1');
+$routes->get('/payments/summary/(:num)','Payments::summary/$1');
+$routes->get('/transactions/(:num)','Payments::getTransactions/$1');
+
+$routes->post('/login','UserAuthorization::login');
+$routes->post('/register','UserAuthorization::register'); 
+$routes->post('/tenants/submit_request','Requests::store');
+
+
+
+
+
+$routes->match(['get','post'],'/addProperty/dummyview', 'AddProperty::dummyview');
+$routes->match(['get','post'],'/addProperty', 'AddProperty::index');
 //Small spelling error above changed - 'addpropery' to 'addproperty'
 
-$routes->get('/applications/(:num)','Applications/index/$1');
-$routes->get('/requests/(:num)','Requests/index/$1');
+$routes->get('/applications/(:num)','Applications::index/$1');
+$routes->get('/requests/(:num)','Requests::index/$1');
 
 /*
  * --------------------------------------------------------------------

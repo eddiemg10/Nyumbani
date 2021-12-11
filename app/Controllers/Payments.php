@@ -3,11 +3,14 @@
 namespace App\Controllers;
 
 use App\Models\PaymentModel;
+use CodeIgniter\API\ResponseTrait;
 
 
 
 class Payments extends BaseController
 {
+    use ResponseTrait;
+
 
 /*HELPER FUNCTIONS START HERE*/
 
@@ -225,7 +228,10 @@ class Payments extends BaseController
         $data = ['data' => json_encode($result)];
  
         //If you want to output Stuff in your browser directly
-        //return json_encode($result);
+
+        return $this->respond($result);
+
+
     }
 
 
@@ -277,6 +283,8 @@ class Payments extends BaseController
         echo "</pre>";*/
 
         $data = ['data' => json_encode($result)];
+        return $this->respond($result);
+
         
     }
 
@@ -292,6 +300,7 @@ class Payments extends BaseController
             $model = new PaymentModel($db);
 
             $owner = $model->isOwner($ownerID);
+
 
             if ($owner === true) {
                 // code...
@@ -319,6 +328,8 @@ class Payments extends BaseController
                         $property->rentArrears = null;
                     }
 
+        // return json_encode($data['data']);
+     
 
 
             }
@@ -332,8 +343,11 @@ class Payments extends BaseController
             $data = ['data' => 'No Property Owner']; 
         }
        
-        return json_encode($data);
+        return $this->respond($data['data']);
+         
+//         return json_encode($data);
 
     }
 
 }
+
