@@ -219,6 +219,53 @@
 ]
   ```
   </details>
+  
+ - `/payments/tenant/?`
+>Gets payment history of a single tenant
+<details>
+  <summary>Example: /payments/tenant/6</summary>
+
+  ```json
+  [
+ {
+        "paymentID": "1",
+        "propertyID": "10",
+        "senderID": "6",
+        "recipientID": "1",
+        "paymentMethod": "Card",
+        "paymentDate": "2021-11-01",
+        "paymentAmount": "70000"
+    },
+    {
+        "paymentID": "2",
+        "propertyID": "10",
+        "senderID": "6",
+        "recipientID": "1",
+        "paymentMethod": "Rent",
+        "paymentDate": "2021-10-01",
+        "paymentAmount": "70000"
+    }
+    
+]
+  ```
+  </details>
+  
+- `/makePayment`
+>`POST` requst that adds a payment
+<details>
+  <summary>Request body</summary>
+
+  ```json
+
+{
+    "propertyID" : 10,
+    "tenantID" : 6,
+    "ownerID": 1,
+    "paymentAmount": 20000
+} 
+
+  ```
+  </details>
 
 ---
 **Property Verification Requests**
