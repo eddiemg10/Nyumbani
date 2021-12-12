@@ -12,13 +12,13 @@ class UserAuthorization extends BaseController{
           $json = $this->request->getJSON();
           $assoc_array = $json;
 
-          $userID = $assoc_array->userID;
-          $userPassword = $assoc_array->userPassword;
+          $email = $assoc_array->email;
+          $password = $assoc_array->password;
 
           $db = db_connect();
           $users = new Users();
 
-          if ($users->verifyLoginDetails($userID,$userPassword)) {
+          if ($users->verifyLoginDetails($email,$password)) {
             return true;
           }
           else {

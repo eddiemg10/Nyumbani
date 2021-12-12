@@ -228,7 +228,9 @@ class Payments extends BaseController
         $data = ['data' => json_encode($result)];
  
         //If you want to output Stuff in your browser directly
+
         return $this->respond($result);
+
 
     }
 
@@ -288,36 +290,68 @@ class Payments extends BaseController
 
 
 //Page 13 of the views Data
-    public function getTransactions($ownerID){
+    
+    //Eddie this is what we discussed ---------
+
+
+
+       public function getTransactions($ownerID)
+       {
+
             $db = db_connect();
-            $model = new paymentModel($db);
+            $model = new PaymentModel($db);
 
             $owner = $model->isOwner($ownerID);
 
-            if ($owner == true) {
-                           
-            $data2 = $model->fetch_data($ownerID);
 
-            // echo "<pre>";
-            // print_r($data2);
-            // echo "</pre>"; die();
+            if ($owner === true) {
+                // code...
+
+                $data2 = $model->fetchit($ownerID);
 
 
-            $data = ['data' => $data2];
-
-        }
-        else{
-            $data = ['data' => 'No Property Owner']; 
-        }
 
 
-            
 
-        return $this->respond($data['data']);
+            foreach ($data2 as $property) {
+                // code...
+
+
+                $rentStatus = $this->rentStatus($property->propertyID);
+
+                
+                    if (!is_null($rentStatus["rentStatus"]))
+                    {
+                        $property->rentStatus = $rentStatus["rentStatus"];
+                        $property->rentArrears = $rentStatus["rentArrears"];
+                    }
+                    else
+                    {
+                        $property->rentStatus = null;
+                        $property->rentArrears = null;
+                    }
+
         // return json_encode($data['data']);
      
+
+
+            }
+
+
+
+            $data = ['data' => json_encode($data2)];
+
+        }else
+        {
+            $data = ['data' => 'No Property Owner']; 
+        }
+       
+        return $this->respond($data['data']);
+         
+//         return json_encode($data);
 
     }
 
 
 }
+

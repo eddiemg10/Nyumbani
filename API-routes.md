@@ -3,6 +3,41 @@
 
 [Go to deployed backend](https://nyumbanibackend.herokuapp.com/)
 
+**Auth**
+
+- `/register`
+ >Register new user
+ 
+ <details>
+ <summary>POST body format</summary>
+ 
+ ```json
+{
+ "firstName" : "Neme1",
+ "lastName" : "Name2",
+ "email" : "email@gmail.com",
+ "role" : "Owner/Tenant/Administrator",
+ "password" : "1234",
+ "passwordConfirm" : "1234",
+}
+ ```
+</details>
+
+- `/login`
+ >Login using email
+ 
+ <details>
+ <summary>POST body format</summary>
+ 
+ ```json
+{
+ "email" : "email@gmail.com",
+ "password" : "1234"
+}
+ ```
+</details>
+
+---
 **Properties**
 
  - `/properties/?`
@@ -83,7 +118,7 @@
 **Transactions**
 
 - `/payments/?`
->Gets payment history of a property
+>Gets payment history of a single property
 <details>
  <summary>Example:  /payments/10</summary>
 
@@ -156,4 +191,117 @@
 }
   ```
   </details>
+  
+  - `/payments/transactions/?`
+>Gets payment summaries of all properties belonging to owner
 
+<details>
+  <summary>Example: /payments/transactions/1</summary>
+
+  ```json
+  [
+    {
+        "propertyID": "15",
+        "thumbnailPhoto": "placeholder.png",
+        "propertyDescription": "Single Bedroom Apartment in Kiambu",
+        "propertyRent": "35000",
+        "rentStatus": "Overdue",
+        "rentArrears": -770000
+    },
+    {
+        "propertyID": "16",
+        "thumbnailPhoto": "placeholder.png",
+        "propertyDescription": "2 Bedroom Apartment in Nairobi",
+        "propertyRent": "50000",
+        "rentStatus": null,
+        "rentArrears": null
+    }
+]
+  ```
+  </details>
+  
+ - `/payments/tenant/?`
+>Gets payment history of a single tenant
+<details>
+  <summary>Example: /payments/tenant/6</summary>
+
+  ```json
+  [
+ {
+        "paymentID": "1",
+        "propertyID": "10",
+        "senderID": "6",
+        "recipientID": "1",
+        "paymentMethod": "Card",
+        "paymentDate": "2021-11-01",
+        "paymentAmount": "70000"
+    },
+    {
+        "paymentID": "2",
+        "propertyID": "10",
+        "senderID": "6",
+        "recipientID": "1",
+        "paymentMethod": "Rent",
+        "paymentDate": "2021-10-01",
+        "paymentAmount": "70000"
+    }
+    
+]
+  ```
+  </details>
+  
+- `/makePayment`
+>`POST` requst that adds a payment
+<details>
+  <summary>Request body</summary>
+
+  ```json
+
+{
+    "propertyID" : 10,
+    "tenantID" : 6,
+    "ownerID": 1,
+    "paymentAmount": 20000
+} 
+
+  ```
+  </details>
+
+---
+**Property Verification Requests**
+
+- `/verifications`
+>Gets all verification requests that have not been taken up by an admin
+
+- `/verifications/?`
+>Gets verification details of a specific request
+
+- `/queue/?`
+>Gets queued verification requests per Admin
+
+ - `/enqueue`
+>`POST` requests that assigns a verification requests to an admin's queue
+
+<details>
+  <summary>Requst Body</summary>
+
+  ```json
+    {
+      "id": 1, //verification request ID
+      "admin": 23
+    }
+  ```
+  </details>
+  
+  - `/verifications/accept/?`
+>Verifies a property by request id
+
+- `/verifications/reject/?`
+>Rejects/unverifies verification for property by request id
+
+
+- `/verifications/accepted`
+>Gets all verification requests that have been rejected
+
+- `/verifications/rejected`
+>Gets all verification requests that have been accepted

@@ -5,7 +5,8 @@ namespace App\Models;
 
 use CodeIgniter\Database\ConnectionInterface;
 
-class PaymentModel
+
+class PaymentModel 
 {
     protected $db;
 
@@ -172,9 +173,22 @@ class PaymentModel
                                 ->join('tbl_property','tbl_property.propertyID= tbl_payments.propertyID')
                                 ->where(["senderID"=>$ownerID,])
                                 ->orWhere("recipientID",$ownerID)
-                                ->orderBy('paymentDate', 'DESC')
+
                                 ->get()
                                 ->getResult();
+            return $query;
+        }
+
+
+        function fetchit($owner)
+        {
+            $query = $this->db->table('tbl_property')
+                                ->select(' tbl_property.propertyID,tbl_property.thumbnailPhoto,tbl_property.propertyDescription,tbl_property.propertyRent')
+                                ->where('ownerID',$owner)
+                                ->get()
+                                ->getResult();
+
+
             return $query;
         }
 
@@ -199,4 +213,58 @@ class PaymentModel
         //TODO add function to get payment status of all properties owned by a user
 
 
+
+        ///Tenants Module
+
+     public function getTenantHistory($tenantID)
+    {
+        return $this->db->table('tbl_payments')
+                        ->where(['senderID'=> $tenantID])
+                        ->orWhere('recipientID',$tenantID)
+                        ->get()
+                        ->getResult();
+
+    }
+
+    public function isTenant($tenantID){
+        $builder = $this->db->table('tbl_property')
+                        ->where("tbl_property.tenantID",$tenantID)
+                        ->get()
+                        ->getResultArray();
+
+        if (empty($builder)) {
+            $bool = false;
+        }else
+        {
+            $bool = true;
+        }
+
+        return $bool;
+    }
+
+
+
+////Neu Roses
+    public function getProperty($tenantID)
+    {
+        $builder = $this->db->table('tbl_property')
+                            ->select('propertyID,ownerID,tenantID')
+                            ->where('tenantID', $tenantID)
+                            ->get()
+                            ->getRow();
+
+        return $builder;
+    }
+
+    public function makePayment($data)
+    {
+        $builder = $this->db->table('tbl_payments')->insert($data);
+
+        
+
+        return true;
+    }
+
+
 }
+
