@@ -3,12 +3,13 @@
 namespace App\Controllers;
 
 use App\Models\PaymentModel;
-
-
+use CodeIgniter\API\ResponseTrait;
 
 
 class Transactions extends BaseController
 {
+
+    use ResponseTrait;
 
 
 	//View Properties Rented by a particular tenant
@@ -57,7 +58,9 @@ class Transactions extends BaseController
 		}
 
 
-		return json_encode($data);
+		// return json_encode($data);
+		return $this->respond($data['data']);
+
 
 	}
 
@@ -104,7 +107,7 @@ class Transactions extends BaseController
 	}*/
 
 
-	public function makePayment($propertyID)
+	public function makePayment()
 	{
 
 		$db = db_connect();
@@ -112,19 +115,19 @@ class Transactions extends BaseController
 
 
 
-		$property = $model->getProperty($propertyID);
+		// $property = $model->getProperty($propertyID);
 
-		echo "<pre>";
-		print_r($property);
-		echo "</pre>";
+		// echo "<pre>";
+		// print_r($property);
+		// echo "</pre>";
 
 		if ($this->request->getMethod() == 'post'){
 			// code...
 			$json = $this->request->getJSON();
 			$data = [
-				'propertyID' => $property->propertyID,
-				'senderID' => $property->tenantID,
-				'recipientID' => $property->ownerID,
+				'propertyID' => $json->propertyID,
+				'senderID' => $json->tenantID,
+				'recipientID' => $json->ownerID,
 				'paymentMethod' => "Rent",
 				'paymentAmount' => $json->paymentAmount,
 				'paymentDate' => date("Y-m-d")
@@ -133,9 +136,9 @@ class Transactions extends BaseController
 
 			if($model->makePayment($data))
 			{
-				return true;
+				return "true";
 			}else{
-				return false;
+				return "false";
 			}
 
 

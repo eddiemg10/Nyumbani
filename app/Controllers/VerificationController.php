@@ -195,3 +195,4 @@ class VerificationController extends BaseController
 
     // end of retrieving rejected requests *********
 
+}

@@ -48,6 +48,9 @@ $routes->get('/payments/(:num)','Payments::extract/$1');
 $routes->get('/payments/summary/(:num)','Payments::summary/$1');
 $routes->get('/transactions/(:num)','Payments::getTransactions/$1');
 
+$routes->get('/payments/tenant/(:num)','Transactions::tenantHistory/$1');
+
+
 
 $routes->get('/verifications','VerificationController::Requestindex');
 $routes->get('/verifications/(:num)','VerificationController::Requestdetails/$1');
@@ -65,6 +68,9 @@ $routes->post('/register','UserAuthorization::register');
 $routes->post('/tenants/submit_request','Requests::store');
 
 $routes->post('/enqueue','VerificationController::QueuebeginVerification');
+
+$routes->post('/makePayment','Transactions::makePayment');
+
 
 
 
