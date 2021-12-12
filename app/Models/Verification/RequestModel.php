@@ -11,6 +11,7 @@
                         ->select('*')
                         ->join('tbl_property', 'tbl_verification.propertyID = tbl_property.propertyID')
                         ->where('tbl_verification.requestStatus', $n)
+
                         ->where('tbl_verification.is_deleted', 0)
                         ->get()
                         ->getResult();
@@ -22,6 +23,7 @@
             return $this->db->table('tbl_verification')
                         ->select('*')
                         ->join('tbl_property', 'tbl_verification.propertyID = tbl_property.propertyID')
+
                         ->where('tbl_verification.requestID', $n)
                         ->where('tbl_verification.is_deleted', 0)
                         ->get()

@@ -17,7 +17,6 @@ class VerificationController extends BaseController
     {
         return view('index');
     }*/
-    
 
     // ******************** Request Starts here ***************************
     public function Requestindex() // retrieving all request
@@ -25,7 +24,7 @@ class VerificationController extends BaseController
         $request = new RequestModel();
         $data['request'] = $request->join();
         
- 
+
         //  return json_encode($data['request']);
         //return view('requests', $data);
 
@@ -38,7 +37,9 @@ class VerificationController extends BaseController
         $details = new RequestModel();
         $data['details'] = $details->join2($id);
 
+
         return $this->respond($data['details']);
+
 
         //return view('details', $data);
     }
@@ -57,17 +58,20 @@ class VerificationController extends BaseController
 
     // Queue Starts Here ********************************************************
 
+
     public function Queueindex($id) // Retrieve all queued Request
     {
         $queue = new QueueModel();
         $data['queue'] = $queue->join($id);
 
         return $this->respond($data['queue']);
+
         //return view('queue', $data);
     }
 
 
     //Function for beginning verification by changing the request Status to Pending
+
     public function QueuebeginVerification() 
     {
         if($this->request->getMethod() == 'post'){
@@ -88,7 +92,6 @@ class VerificationController extends BaseController
             return $result;
             
         }
-        
     }
 
 
@@ -96,7 +99,9 @@ class VerificationController extends BaseController
     public function Queueconfirm($id)
     {
         $model = new QueueModel();
+
         $prod = new Property();
+
 
         
         $data = [
@@ -104,6 +109,7 @@ class VerificationController extends BaseController
         ];
         
         $reqID = $id;
+
 
         $property = $model->select("propertyID")->where("requestID", $reqID)->get()->getResult()[0]->propertyID;
         $prod->verifyProperty($property);
@@ -114,19 +120,23 @@ class VerificationController extends BaseController
 
         return $result;
 
+
     }
 
     //Function for Rejecting a Request
     public function Queuereject($id) // here we reject it(the request)
     {
         $model = new QueueModel();
+
         $prod = new Property();
+
         
         $data = [
             'requestStatus' => "Rejected"
         ];
         
         $reqID = $id;
+
         $property = $model->select("propertyID")->where("requestID", $reqID)->get()->getResult()[0]->propertyID;
         $prod->unverifyProperty($property);
 
@@ -136,6 +146,7 @@ class VerificationController extends BaseController
         ])->set($data)->update();
 
         return $result;
+
     }
 
     // end of Queue *************
@@ -152,7 +163,9 @@ class VerificationController extends BaseController
         $data['confirmed'] = $confirmed->join();
 
 
+
         return $this->respond($data['confirmed']);
+
 
         
         /*return view('confirmed', $data);*/
@@ -172,11 +185,13 @@ class VerificationController extends BaseController
         $data['rejected'] = $rejected->join();
 
 
+
         return $this->respond($data['rejected']);
+
 
         
         /*return view('Reject', $data);*/
     }
 
     // end of retrieving rejected requests *********
-}
+
