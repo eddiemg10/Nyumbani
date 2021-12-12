@@ -294,8 +294,10 @@ class Payments extends BaseController
     //Eddie this is what we discussed ---------
 
 
+
        public function getTransactions($ownerID)
        {
+
             $db = db_connect();
             $model = new PaymentModel($db);
 
@@ -306,6 +308,7 @@ class Payments extends BaseController
                 // code...
 
                 $data2 = $model->fetchit($ownerID);
+
 
 
 
@@ -348,6 +351,7 @@ class Payments extends BaseController
 //         return json_encode($data);
 
     }
+
 
 }
 

@@ -27,6 +27,16 @@ class Property extends Model{
         return $data;
     }
 
+    public function verifyProperty($id){
+        
+        $this->db->query("UPDATE `tbl_property` SET `isVerified` = '1' WHERE `tbl_property`.`propertyID` = ".$id);
+    }
+
+    public function unverifyProperty($id){
+        
+        $this->db->query("UPDATE `tbl_property` SET `isVerified` = '0' WHERE `tbl_property`.`propertyID` = ".$id);
+    }
+
     public function getTenantProperties($id){
         $query = $this->db->query('SELECT * FROM `tbl_property` WHERE tenantID= '.$id);
         return ($query->getResult());

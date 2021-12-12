@@ -6,19 +6,25 @@
 
         protected $table = 'tbl_verification';
         protected $allowedFields = [
-            'requestStatus'
+
+            'propertyID', 'requestStatus', 'updated_by', 'updated_at', 'is_deleted'
         ];
 
-        function join()
+        function join($admin)
+
         {
             $n = 'Pending';
             return $this->db->table('tbl_verification')
                         ->select('*')
                         ->join('tbl_property', 'tbl_verification.propertyID = tbl_property.propertyID')
                         ->where('tbl_verification.requestStatus', $n)
+
+                        ->where('tbl_verification.updated_by', $admin)
+
                         ->get()
                         ->getResult();
         }
+
 
         // function update($id)
         // {

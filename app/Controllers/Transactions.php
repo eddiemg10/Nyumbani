@@ -10,6 +10,7 @@ use App\Models\PaymentModel;
 class Transactions extends BaseController
 {
 
+
 	//View Properties Rented by a particular tenant
 	public function tenantProperties($tenantID)
 	{
@@ -61,7 +62,9 @@ class Transactions extends BaseController
 	}
 
 //Function to make payments
+
 /*	public function makePayment($tenantID)
+
 	{
 
 		$db = db_connect();
@@ -72,18 +75,23 @@ class Transactions extends BaseController
 		$property = $model->getProperty($tenantID);
 
 
+
 		if ($this->request->getMethod() == 'post'){
 			// code...
 			$json = $this->request->getJSON();
+
 			$data = [
 				'propertyID' => $property->propertyID,
 				'senderID' => $tenantID,
 				'recipientID' => $property->ownerID,
 				'paymentMethod' => "Rent",
+
 				'paymentAmount' => $json->paymentAmount,
+
 				'paymentDate' => date("Y-m-d")
 
 			];
+
 
 			if($model->makePayment($data))
 			{
@@ -129,6 +137,7 @@ class Transactions extends BaseController
 			}else{
 				return false;
 			}
+
 
 		}
 	}

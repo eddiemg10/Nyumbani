@@ -37,7 +37,6 @@ $routes->get('/listing/(:num)','Listing::index/$1');
 $routes->get('/listings','Listing::getListings');
 $routes->get('/listings/(:num)','Listing::getSingleListing/$1');
 
-// $routes->get('/users','User');
 
 
 $routes->get('/tenants/(:num)','Properties::getTenantProperties/$1');
@@ -49,9 +48,23 @@ $routes->get('/payments/(:num)','Payments::extract/$1');
 $routes->get('/payments/summary/(:num)','Payments::summary/$1');
 $routes->get('/transactions/(:num)','Payments::getTransactions/$1');
 
+
+$routes->get('/verifications','VerificationController::Requestindex');
+$routes->get('/verifications/(:num)','VerificationController::Requestdetails/$1');
+
+$routes->get('/verifications/accept/(:num)','VerificationController::Queueconfirm/$1');
+$routes->get('/verifications/reject/(:num)','VerificationController::Queuereject/$1');
+
+$routes->get('/verifications/accepted','VerificationController::Approvedindex');
+$routes->get('/verifications/rejected','VerificationController::rejectedindex');
+$routes->get('/queue/(:num)','VerificationController::Queueindex/$1');
+
+
 $routes->post('/login','UserAuthorization::login');
 $routes->post('/register','UserAuthorization::register'); 
 $routes->post('/tenants/submit_request','Requests::store');
+
+$routes->post('/enqueue','VerificationController::QueuebeginVerification');
 
 
 
