@@ -13,6 +13,16 @@
         <nav class="navbar-dark">
             <ul CLASS="navbar-nav">
 
+                <li class="fs-5 mb-2" style="margin-top: -50px;">
+                    <div class="mb-4">
+                        <img src="../../uploads/images/properties/logo.png">
+                    </div>
+                </li>
+
+
+                <li class="my-2">
+                    <hr class="dropdown-divider">
+                </li>
 
                 <li class="fs-5 mb-2">
                     <div class="text-muted small fw-bolf text-uppercase px-3">
@@ -20,17 +30,10 @@
                     </div>
                 </li>
 
-                <li class="ms-3 mb-2">
-                    <a href="#" class="nav-link">
-                        <span class="me-2">
-                            <i class="fas fa-chart-line"></i>
-                        </span>
-                        <span>Charts</span>
-                    </a>
-                </li>
+
 
                 <li class="ms-3 mb-2">
-                    <a href="#" class="nav-link">
+                    <a href="http://localhost:8080/admin" class="nav-link">
                         <span class="me-2">
                             <i class="fas fa-chart-pie"></i>
                         </span>
@@ -48,13 +51,22 @@
                     </div>
                 </li>
 
+                <li class="ms-3 mb-2">
+                    <a href="http://localhost:8080/admin/verification/23" class="nav-link">
+                        <span class="me-2">
+                            <i class="fas fa-chart-line"></i>
+                        </span>
+                        <span>Verify Properties</span>
+                    </a>
+                </li>
+
 
                 <li class="my-2">
                     <hr class="dropdown-divider">
                 </li>
 
 
-                <li class="fs-5 mb-2">
+                <!-- <li class="fs-5 mb-2">
                     <div class="text-muted small fw-bolf text-uppercase px-3">
                         USERS
                     </div>
@@ -67,11 +79,11 @@
                         </span>
                         <span>Manage users</span>
                     </a>
-                </li>
+                </li> -->
 
-                <li class="my-2">
+                <!-- <li class="my-2">
                     <hr class="dropdown-divider">
-                </li>
+                </li> -->
 
 
 

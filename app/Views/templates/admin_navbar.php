@@ -8,7 +8,7 @@
         </button>
         <!--End of trigger   -->
 
-        <a class="navbar-brand me-3 fw-bold" href="#">NYUMBANI</a>
+        <a class="navbar-brand me-3 fw-bold" href="#"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <!-- <img src="/assets/icons/user2.png" alt="user icon" width="30" class="d-inline-block"> -->
 
-                            <?php echo "Username here"//echo session()->get('firstname')." ".session()->get('lastname') ?>
+                            <?php echo "Admin"//echo session()->get('firstname')." ".session()->get('lastname') ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end"
                             aria-labelledby="navbarDarkDropdownMenuLink">

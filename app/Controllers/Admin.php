@@ -41,4 +41,8 @@ class Admin extends BaseController{
         return view('admin/verification', $data);
     }
 
+    public function users(){
+        
+    }
+
 }
